@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="..\src\FileDialogHelper.cs">
       <Link>FileDialogHelper.cs</Link>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="..\src\FileInfo.cs">
       <Link>FileInfo.cs</Link>

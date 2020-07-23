@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Cyotek.Demo.DoomPictureViewer
+namespace Cyotek.Windows.Forms.Demo
 {
   internal class BaseForm : System.Windows.Forms.Form
   {

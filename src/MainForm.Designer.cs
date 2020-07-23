@@ -1,4 +1,4 @@
-﻿namespace Cyotek.Demo.DoomPictureViewer
+﻿namespace Cyotek.Windows.Forms.Demo
 {
   partial class MainForm
   {
@@ -393,7 +393,7 @@
     private System.Windows.Forms.ToolStripMenuItem useTransparencyToolStripMenuItem;
     private System.Windows.Forms.ToolStripStatusLabel widthToolStripStatusLabel;
     private System.Windows.Forms.ToolStripStatusLabel heightToolStripStatusLabel;
-    private FilePane filePane;
+    private Cyotek.Demo.DoomPictureViewer.FilePane filePane;
   }
 }
 

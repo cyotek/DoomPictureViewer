@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 
-namespace Cyotek.Demo.DoomPictureViewer
+namespace Cyotek.Demo
 {
   internal static class FileDialogHelper
   {

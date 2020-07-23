@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Cyotek.Demo;
+using Cyotek.Demo.DoomPictureViewer;
+using System;
 using System.IO;
 using System.Windows.Forms;
+using FileInfo = Cyotek.Demo.FileInfo;
 
-namespace Cyotek.Demo.DoomPictureViewer
+namespace Cyotek.Windows.Forms.Demo
 {
   public partial class MainForm : Form
   {
