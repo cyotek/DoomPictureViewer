@@ -1,0 +1,8 @@
+.vs/
+bin/
+obj/
+samples/**
+
+*.user
+
+!samples/*.bin

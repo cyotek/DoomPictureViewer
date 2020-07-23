@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoomPictureViewer", "src\DoomPictureViewer.csproj", "{8835B2E9-3251-484A-BDFC-F1FA285B41C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoomPictureHexViewer", "hexview\DoomPictureHexViewer.csproj", "{1B593993-E37E-4CAD-B67E-CEBBB6435128}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8835B2E9-3251-484A-BDFC-F1FA285B41C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8835B2E9-3251-484A-BDFC-F1FA285B41C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8835B2E9-3251-484A-BDFC-F1FA285B41C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8835B2E9-3251-484A-BDFC-F1FA285B41C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B593993-E37E-4CAD-B67E-CEBBB6435128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B593993-E37E-4CAD-B67E-CEBBB6435128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B593993-E37E-4CAD-B67E-CEBBB6435128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B593993-E37E-4CAD-B67E-CEBBB6435128}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09732254-8A3C-4668-9441-0432B23695B2}
+	EndGlobalSection
+EndGlobal
