@@ -34,6 +34,7 @@
       this.toolStrip = new System.Windows.Forms.ToolStrip();
       this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.splitContainer = new System.Windows.Forms.SplitContainer();
+      this.filePane = new Cyotek.Windows.Forms.Demo.FilePane();
       this.hexViewer = new Cyotek.Windows.Forms.Demo.HexViewer();
       this.statusStrip = new System.Windows.Forms.StatusStrip();
       this.statusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -49,7 +50,6 @@
       this.secondaryPostsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
       this.toolTipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.filePane = new Cyotek.Demo.DoomPictureViewer.FilePane();
       this.toolStrip.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
       this.splitContainer.Panel1.SuspendLayout();
@@ -110,6 +110,15 @@
       this.splitContainer.Size = new System.Drawing.Size(784, 490);
       this.splitContainer.SplitterDistance = 248;
       this.splitContainer.TabIndex = 2;
+      // 
+      // filePane
+      // 
+      this.filePane.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.filePane.Location = new System.Drawing.Point(0, 0);
+      this.filePane.Name = "filePane";
+      this.filePane.Size = new System.Drawing.Size(248, 490);
+      this.filePane.TabIndex = 1;
+      this.filePane.SelectedFileChanged += new System.EventHandler(this.FilePane_SelectedFileChanged);
       // 
       // hexViewer
       // 
@@ -241,15 +250,6 @@
       this.toolTipsToolStripMenuItem.Text = "&Tool Tips";
       this.toolTipsToolStripMenuItem.Click += new System.EventHandler(this.ToolTipsToolStripMenuItem_Click);
       // 
-      // filePane
-      // 
-      this.filePane.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.filePane.Location = new System.Drawing.Point(0, 0);
-      this.filePane.Name = "filePane";
-      this.filePane.Size = new System.Drawing.Size(248, 490);
-      this.filePane.TabIndex = 1;
-      this.filePane.SelectedFileChanged += new System.EventHandler(this.FilePane_SelectedFileChanged);
-      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,7 +263,6 @@
       this.MinimumSize = new System.Drawing.Size(640, 480);
       this.Name = "MainForm";
       this.Text = "Doom Picture Hex Viewer";
-      this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
       this.toolStrip.ResumeLayout(false);
       this.toolStrip.PerformLayout();
       this.splitContainer.Panel1.ResumeLayout(false);
@@ -300,7 +299,7 @@
     private System.Windows.Forms.ToolStripStatusLabel statusToolStripStatusLabel;
     private System.Windows.Forms.ToolStripStatusLabel cyotekLinkToolStripStatusLabel;
     private System.Windows.Forms.ToolStripStatusLabel sizeToolStripStatusLabel;
-    private Cyotek.Demo.DoomPictureViewer.FilePane filePane;
+    private FilePane filePane;
   }
 }
 

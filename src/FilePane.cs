@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Cyotek.Demo;
+using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
+using FileInfo = Cyotek.Demo.FileInfo;
 
-namespace Cyotek.Demo.DoomPictureViewer
+namespace Cyotek.Windows.Forms.Demo
 {
   [DefaultEvent(nameof(SelectedFileChanged))]
   internal partial class FilePane : UserControl
@@ -16,11 +18,17 @@ namespace Cyotek.Demo.DoomPictureViewer
 
     private static readonly object _eventSearchPatternChanged = new object();
 
+    private static readonly object _eventSelectedFileChanged = new object();
+
     private bool _multiSelect;
 
     private string _path;
 
     private string _searchPattern;
+
+    private FileInfo _selectedFile;
+
+    private bool _skipSelectionEvents;
 
     #endregion Private Fields
 
@@ -53,14 +61,6 @@ namespace Cyotek.Demo.DoomPictureViewer
       }
     }
 
-    public void EnsureSelection()
-    {
-      if (filesListListBox.Items.Count > 0)
-      {
-        filesListListBox.SelectedIndex = 0;
-      }
-    }
-
     /// <summary>
     /// Occurs when the Path property value changes
     /// </summary>
@@ -90,6 +90,22 @@ namespace Cyotek.Demo.DoomPictureViewer
       remove
       {
         this.Events.RemoveHandler(_eventSearchPatternChanged, value);
+      }
+    }
+
+    /// <summary>
+    /// Occurs when the SelectedFile property value changes
+    /// </summary>
+    [Category("Property Changed")]
+    public event EventHandler SelectedFileChanged
+    {
+      add
+      {
+        this.Events.AddHandler(_eventSelectedFileChanged, value);
+      }
+      remove
+      {
+        this.Events.RemoveHandler(_eventSelectedFileChanged, value);
       }
     }
 
@@ -129,8 +145,8 @@ namespace Cyotek.Demo.DoomPictureViewer
       }
     }
 
-    [Browsable(false)]
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Category("Behavior")]
+    [DefaultValue("*")]
     public string SearchPattern
     {
       get { return _searchPattern; }
@@ -144,8 +160,6 @@ namespace Cyotek.Demo.DoomPictureViewer
         }
       }
     }
-
-    private FileInfo _selectedFile;
 
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -163,43 +177,43 @@ namespace Cyotek.Demo.DoomPictureViewer
       }
     }
 
-    private static readonly object _eventSelectedFileChanged = new object();
-
-    /// <summary>
-    /// Occurs when the SelectedFile property value changes
-    /// </summary>
-    [Category("Property Changed")]
-    public event EventHandler SelectedFileChanged
-    {
-      add
-      {
-        this.Events.AddHandler(_eventSelectedFileChanged, value);
-      }
-      remove
-      {
-        this.Events.RemoveHandler(_eventSelectedFileChanged, value);
-      }
-    }
-
-    /// <summary>
-    /// Raises the <see cref="SelectedFileChanged" /> event.
-    /// </summary>
-    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-    protected virtual void OnSelectedFileChanged(EventArgs e)
-    {
-      EventHandler handler;
-
-      this.SelectFile(_selectedFile?.FullPath);
-
-      handler = (EventHandler)this.Events[_eventSelectedFileChanged];
-
-      handler?.Invoke(this, e);
-    }
-
-    private bool _skipSelectionEvents;
-
-
     #endregion Public Properties
+
+    #region Public Methods
+
+    public void EnsureSelection()
+    {
+      if (filesListListBox.Items.Count > 0)
+      {
+        filesListListBox.SelectedIndex = 0;
+      }
+    }
+
+    public void SelectFile(string fileName)
+    {
+      _skipSelectionEvents = true;
+
+      if (_multiSelect)
+      {
+        filesListListBox.SelectedItems.Clear();
+      }
+
+      if (!string.IsNullOrEmpty(fileName))
+      {
+        for (int i = 0; i < filesListListBox.Items.Count; i++)
+        {
+          if (filesListListBox.Items[i] is FileInfo info && string.Equals(info.FullPath, fileName, StringComparison.OrdinalIgnoreCase))
+          {
+            filesListListBox.SelectedIndex = i;
+            break;
+          }
+        }
+      }
+
+      _skipSelectionEvents = false;
+    }
+
+    #endregion Public Methods
 
     #region Protected Methods
 
@@ -234,30 +248,6 @@ namespace Cyotek.Demo.DoomPictureViewer
       handler?.Invoke(this, e);
     }
 
-    public void SelectFile(string fileName)
-    {
-      _skipSelectionEvents = true;
-
-      if (_multiSelect)
-      {
-        filesListListBox.SelectedItems.Clear();
-      }
-
-      if (!string.IsNullOrEmpty(fileName))
-      {
-        for (int i = 0; i < filesListListBox.Items.Count; i++)
-        {
-          if (filesListListBox.Items[i] is FileInfo info && string.Equals(info.FullPath, fileName, StringComparison.OrdinalIgnoreCase))
-          {
-            filesListListBox.SelectedIndex = i;
-            break;
-          }
-        }
-      }
-
-      _skipSelectionEvents = false;
-    }
-
     /// <summary>
     /// Raises the <see cref="SearchPatternChanged" /> event.
     /// </summary>
@@ -273,9 +263,32 @@ namespace Cyotek.Demo.DoomPictureViewer
       handler?.Invoke(this, e);
     }
 
+    /// <summary>
+    /// Raises the <see cref="SelectedFileChanged" /> event.
+    /// </summary>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+    protected virtual void OnSelectedFileChanged(EventArgs e)
+    {
+      EventHandler handler;
+
+      this.SelectFile(_selectedFile?.FullPath);
+
+      handler = (EventHandler)this.Events[_eventSelectedFileChanged];
+
+      handler?.Invoke(this, e);
+    }
+
     #endregion Protected Methods
 
     #region Private Methods
+
+    private void FilesListListBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      if (!_skipSelectionEvents)
+      {
+        this.SelectedFile = filesListListBox.SelectedItem as FileInfo;
+      }
+    }
 
     private void LoadFiles()
     {
@@ -326,13 +339,5 @@ namespace Cyotek.Demo.DoomPictureViewer
     }
 
     #endregion Private Methods
-
-    private void FilesListListBox_SelectedIndexChanged(object sender, EventArgs e)
-    {
-      if (!_skipSelectionEvents)
-      {
-        this.SelectedFile = filesListListBox.SelectedItem as FileInfo;
-      }
-    }
   }
 }

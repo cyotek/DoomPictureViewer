@@ -491,15 +491,14 @@ namespace Cyotek.Windows.Forms.Demo
 
     private void DefineRowsAndColumns()
     {
-      Size size;
-
-      size = this.ClientSize;
-
-      _visibleRows = (size.Height - this.Padding.Vertical) / _cellSize.Height;
-
       if (_totalBytes > 0)
       {
         int clientWidth;
+        Size size;
+
+        size = this.ClientSize;
+
+        _visibleRows = (size.Height - this.Padding.Vertical) / _cellSize.Height;
 
         clientWidth = size.Width - (SystemInformation.VerticalScrollBarWidth
           + this.Padding.Horizontal
@@ -515,6 +514,8 @@ namespace Cyotek.Windows.Forms.Demo
       }
       else
       {
+        _visibleRows = 0;
+        _columns = 0;
         _rows = 0;
       }
 

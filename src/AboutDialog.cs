@@ -1,11 +1,11 @@
-﻿using Cyotek.Windows.Forms.Demo;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Cyotek.Demo.DoomPictureViewer
+namespace Cyotek.Windows.Forms.Demo
 {
   internal partial class AboutDialog : BaseForm
   {
@@ -34,13 +34,18 @@ namespace Cyotek.Demo.DoomPictureViewer
 
     internal static void OpenCyotekHomePage()
     {
+      AboutDialog.OpenUrl("https://www.cyotek.com");
+    }
+
+    internal static void OpenUrl(string url)
+    {
       try
       {
-        Process.Start("https://www.cyotek.com");
+        Process.Start(url);
       }
       catch (Exception ex)
       {
-        MessageBox.Show(ex.GetBaseException().Message, "Open Internet Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        MessageBox.Show(ex.GetBaseException().Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -59,6 +64,7 @@ namespace Cyotek.Demo.DoomPictureViewer
     {
       FileVersionInfo versionInfo;
       int x;
+      int w;
 
       if (!this.DesignMode)
       {
@@ -74,9 +80,14 @@ namespace Cyotek.Demo.DoomPictureViewer
       iconPictureBox.Image = Application.OpenForms.Cast<Form>().Single(f => f.GetType() == typeof(MainForm)).Icon.ToBitmap();
 
       x = iconPictureBox.Right + iconPictureBox.Margin.Right + nameLabel.Margin.Left;
+      w = this.ClientSize.Width - (iconPictureBox.Left + x);
 
-      nameLabel.Left = x;
-      copyrightLabel.Left = x;
+      nameLabel.SetBounds(x, 0, w, 0, BoundsSpecified.X | BoundsSpecified.Width);
+      versionLabel.SetBounds(x, 0, w, 0, BoundsSpecified.X | BoundsSpecified.Width);
+      copyrightLabel.SetBounds(x, 0, w, 0, BoundsSpecified.X | BoundsSpecified.Width);
+      infoLinkLabel.SetBounds(x, 0, w, 0, BoundsSpecified.X | BoundsSpecified.Width);
+
+      this.LoadAboutText();
 
       base.OnLoad(e);
     }
@@ -90,9 +101,55 @@ namespace Cyotek.Demo.DoomPictureViewer
       this.Close();
     }
 
+    private void InfoLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+      AboutDialog.OpenUrl((string)e.Link.LinkData);
+    }
+
+    private void LoadAboutText()
+    {
+      string fileName;
+
+      fileName = Path.Combine(Application.StartupPath, "about.txt");
+
+      if (File.Exists(fileName))
+      {
+        string text;
+        int linkStart;
+
+        text = File.ReadAllText(fileName);
+
+        infoLinkLabel.Text = text;
+        linkStart = -1;
+
+        do
+        {
+          linkStart = text.IndexOf('<', linkStart + 1);
+
+          if (linkStart != -1)
+          {
+            int linkEnd;
+
+            linkEnd = text.IndexOf('>', linkStart);
+
+            if (linkEnd != -1)
+            {
+              int length;
+              string link;
+
+              length = linkEnd - linkStart;
+              link = text.Substring(linkStart + 1, length - 1);
+
+              infoLinkLabel.Links.Add(linkStart + 1, length - 1, link);
+            }
+          }
+        } while (linkStart != -1);
+      }
+    }
+
     private void WebLinkLabel_LinkClicked(object sender, EventArgs e)
     {
-      OpenCyotekHomePage();
+      AboutDialog.OpenCyotekHomePage();
     }
 
     #endregion Private Methods

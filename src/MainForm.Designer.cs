@@ -57,7 +57,7 @@
       this.heightToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.cyotekLinkToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.splitContainer = new System.Windows.Forms.SplitContainer();
-      this.filePane = new Cyotek.Demo.DoomPictureViewer.FilePane();
+      this.filePane = new FilePane();
       this.previewImageBox = new Cyotek.Windows.Forms.ImageBox();
       this.menuStrip.SuspendLayout();
       this.toolStrip.SuspendLayout();
@@ -393,7 +393,7 @@
     private System.Windows.Forms.ToolStripMenuItem useTransparencyToolStripMenuItem;
     private System.Windows.Forms.ToolStripStatusLabel widthToolStripStatusLabel;
     private System.Windows.Forms.ToolStripStatusLabel heightToolStripStatusLabel;
-    private Cyotek.Demo.DoomPictureViewer.FilePane filePane;
+    private FilePane filePane;
   }
 }
 

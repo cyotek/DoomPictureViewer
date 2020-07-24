@@ -1,4 +1,4 @@
-﻿namespace Cyotek.Demo.DoomPictureViewer
+﻿namespace Cyotek.Windows.Forms.Demo
 {
   partial class FilePane
   {
