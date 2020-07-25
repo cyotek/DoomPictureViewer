@@ -2,11 +2,11 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Doom Picture Viewer")]
+[assembly: AssemblyTitle("DOOM Picture Viewer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Cyotek Ltd")]
-[assembly: AssemblyProduct("Doom Picture Viewer")]
+[assembly: AssemblyProduct("DOOM Picture Viewer")]
 [assembly: AssemblyCopyright("Copyright © 2020 Cyotek Ltd. All Rights Reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
