@@ -94,31 +94,19 @@ namespace Cyotek.Demo.DoomPictureViewer
 
             row = data[pointer];
 
-            if (row != 255)
+            if (row != 255 && (postHeight = data[++pointer]) != 255)
             {
-              if (pointer < data.Length - 1)
+              pointer++; // unused value
+
+              for (int i = 0; i < postHeight; i++)
               {
-                postHeight = data[++pointer];
-
-                if (postHeight != 255)
+                if (row + i < height && pointer < data.Length - 1)
                 {
-                  pointer++; // unused value
-
-                  for (int i = 0; i < postHeight; i++)
-                  {
-                    if (row + i < height && pointer < data.Length - 1)
-                    {
-                      pixelData[((row + i) * width) + column] = data[++pointer];
-                    }
-                  }
-
-                  pointer++; // unused value
-                }
-                else
-                {
-                  break;
+                  pixelData[((row + i) * width) + column] = data[++pointer];
                 }
               }
+
+              pointer++; // unused value
             }
             else
             {
@@ -145,7 +133,7 @@ namespace Cyotek.Demo.DoomPictureViewer
       int stride;
 
       bitmap = new Bitmap(width, height, PixelFormat.Format8bppIndexed);
-      bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), System.Drawing.Imaging.ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
+      bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
 
       // can't create brand new palettes
       // so need to rework the existing one
