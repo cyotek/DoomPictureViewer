@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cyotek.Data.Wad;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -57,8 +58,8 @@ namespace Cyotek.Demo.DoomPictureViewer
       int height;
       byte[] pixelData;
 
-      width = BitConverter.ToInt16(data, 0);
-      height = BitConverter.ToInt16(data, 2);
+      width = WordHelpers.GetInt16Le(data, 0);
+      height = WordHelpers.GetInt16Le(data, 2);
 
       pixelData = new byte[width * height];
 
@@ -83,7 +84,7 @@ namespace Cyotek.Demo.DoomPictureViewer
       {
         int pointer;
 
-        pointer = BitConverter.ToInt32(data, (column * 4) + 8);
+        pointer = WordHelpers.GetInt32Le(data, (column * 4) + 8);
 
         if (pointer < data.Length - 1)
         {

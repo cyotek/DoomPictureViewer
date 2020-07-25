@@ -73,6 +73,9 @@
       <Link>FilePane.designer.cs</Link>
       <DependentUpon>FilePane.cs</DependentUpon>
     </Compile>
+    <Compile Include="..\src\WordHelpers.cs">
+      <Link>WordHelpers.cs</Link>
+    </Compile>
     <Compile Include="DoomPictureRangeParser.cs" />
     <Compile Include="HexViewer.cs">
       <SubType>Component</SubType>

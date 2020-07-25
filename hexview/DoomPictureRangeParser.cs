@@ -1,4 +1,5 @@
-﻿using Cyotek.Windows.Forms.Demo;
+﻿using Cyotek.Data.Wad;
+using Cyotek.Windows.Forms.Demo;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -53,8 +54,8 @@ namespace Cyotek.Demo.DoomPictureViewer
         short width;
         short height;
         
-        width = BitConverter.ToInt16(buffer, 0);
-        height = BitConverter.ToInt16(buffer, 2);
+        width = WordHelpers.GetInt16Le(buffer, 0);
+        height = WordHelpers.GetInt16Le(buffer, 2);
 
         // do some basic sanity checking
         if (width > 0 && width <= 320 && height > 0 && height <= 200)
@@ -71,7 +72,7 @@ namespace Cyotek.Demo.DoomPictureViewer
             int index;
 
             index = 8 + (i * 4);
-            pointer[i] = BitConverter.ToInt32(buffer, index);
+            pointer[i] = WordHelpers.GetInt32Le(buffer, index);
 
             control.AddRange(new HexViewer.ByteGroup
             {
