@@ -595,7 +595,10 @@ namespace Cyotek.Windows.Forms.Demo
               activeRange = this.FindRange(index);
             }
 
-            this.DrawCell(g, index, x, y, activeRange);
+            if (index < _totalBytes)
+            {
+              this.DrawCell(g, index, x, y, activeRange);
+            }
 
             x += _columnSize;
             index++;
