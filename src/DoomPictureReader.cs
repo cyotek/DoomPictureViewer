@@ -86,36 +86,32 @@ namespace Cyotek.Demo.DoomPictureViewer
 
         pointer = WordHelpers.GetInt32Le(data, (column * 4) + 8);
 
-        if (pointer < data.Length - 1)
+        do
         {
-          do
+          int row;
+          int postHeight;
+
+          row = data[pointer];
+
+          if (row != 255 && (postHeight = data[++pointer]) != 255)
           {
-            int row;
-            int postHeight;
+            pointer++; // unused value
 
-            row = data[pointer];
-
-            if (row != 255 && (postHeight = data[++pointer]) != 255)
+            for (int i = 0; i < postHeight; i++)
             {
-              pointer++; // unused value
-
-              for (int i = 0; i < postHeight; i++)
+              if (row + i < height && pointer < data.Length - 1)
               {
-                if (row + i < height && pointer < data.Length - 1)
-                {
-                  pixelData[((row + i) * width) + column] = data[++pointer];
-                }
+                pixelData[((row + i) * width) + column] = data[++pointer];
               }
+            }
 
-              pointer++; // unused value
-            }
-            else
-            {
-              break;
-            }
-            // data value of 255 symbolises the end of the
-          } while (pointer < data.Length - 1 && data[++pointer] != 255);
-        }
+            pointer++; // unused value
+          }
+          else
+          {
+            break;
+          }
+        } while (pointer < data.Length - 1 && data[++pointer] != 255);
       }
 
       return this.CreateIndexedBitmap(width, height, pixelData);
