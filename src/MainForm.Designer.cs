@@ -57,7 +57,7 @@
       this.heightToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.cyotekLinkToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.splitContainer = new System.Windows.Forms.SplitContainer();
-      this.filePane = new FilePane();
+      this.filePane = new Cyotek.Windows.Forms.Demo.FilePane();
       this.previewImageBox = new Cyotek.Windows.Forms.ImageBox();
       this.menuStrip.SuspendLayout();
       this.toolStrip.SuspendLayout();
@@ -318,6 +318,7 @@
       this.filePane.Dock = System.Windows.Forms.DockStyle.Fill;
       this.filePane.Location = new System.Drawing.Point(0, 0);
       this.filePane.Name = "filePane";
+      this.filePane.SearchPattern = "*.";
       this.filePane.Size = new System.Drawing.Size(248, 490);
       this.filePane.TabIndex = 1;
       this.filePane.SelectedFileChanged += new System.EventHandler(this.FilePane_SelectedFileChanged);
