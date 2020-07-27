@@ -5,8 +5,15 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-// Writing Adobe Swatch Exchange (ase) files using C#
-// http://www.cyotek.com/blog/writing-adobe-swatch-exchange-ase-files-using-csharp
+// Decoding DOOM Picture Files
+// https://www.cyotek.com/blog/decoding-doom-picture-files
+// Copyright © 2020 Cyotek Ltd. All Rights Reserved.
+
+// This work is licensed under the Creative Commons Attribution 4.0 International License.
+// To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
+
+// Found this example useful?
+// https://www.paypal.me/cyotek
 
 namespace Cyotek.Windows.Forms.Demo
 {
@@ -20,11 +27,11 @@ namespace Cyotek.Windows.Forms.Demo
         | TextFormatFlags.NoPrefix
         | TextFormatFlags.NoPadding;
 
+    private static readonly HitTestInfo _emptyHitInfo = new HitTestInfo(false, Point.Empty, -1);
+
     private static readonly object _eventShowToolTipsChanged = new object();
 
     private static readonly object _eventTopRowChanged = new object();
-
-    private static readonly HitTestInfo _emptyHitInfo = new HitTestInfo(false, Point.Empty, -1);
 
     private readonly List<ByteGroup> _groups;
 
@@ -137,12 +144,6 @@ namespace Cyotek.Windows.Forms.Demo
       get { return base.BackColor; }
       set { base.BackColor = value; }
     }
-    [DefaultValue(typeof(Color), "WindowText")]
-    public override Color ForeColor
-    {
-      get { return base.ForeColor; }
-      set { base.ForeColor = value; }
-    }
 
     [Browsable(false)]
     public int Columns
@@ -180,6 +181,13 @@ namespace Cyotek.Windows.Forms.Demo
     {
       get { return base.Font; }
       set { base.Font = value; }
+    }
+
+    [DefaultValue(typeof(Color), "WindowText")]
+    public override Color ForeColor
+    {
+      get { return base.ForeColor; }
+      set { base.ForeColor = value; }
     }
 
     [Browsable(false)]

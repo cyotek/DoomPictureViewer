@@ -1,8 +1,12 @@
-﻿// Loading Microsoft RIFF Palette (pal) files with C#
-// http://cyotek.com/blog/loading-microsoft-riff-palette-pal-files-with-csharp
+﻿// Decoding DOOM Picture Files
+// https://www.cyotek.com/blog/decoding-doom-picture-files
+// Copyright © 2020 Cyotek Ltd. All Rights Reserved.
 
-// Writing Microsoft RIFF Palette (pal) files with C#
-// http://cyotek.com/blog/writing-microsoft-riff-palette-pal-files-with-csharp
+// This work is licensed under the Creative Commons Attribution 4.0 International License.
+// To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
+
+// Found this example useful?
+// https://www.paypal.me/cyotek
 
 namespace Cyotek.Data.Wad
 {
