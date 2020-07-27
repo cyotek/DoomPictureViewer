@@ -2,11 +2,11 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Doom Picture Hex Viewer")]
+[assembly: AssemblyTitle("DOOM Picture Hex Viewer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Cyotek Ltd")]
-[assembly: AssemblyProduct("Doom Picture Hex Viewer")]
+[assembly: AssemblyProduct("DOOM Picture Hex Viewer")]
 [assembly: AssemblyCopyright("Copyright © 2020 Cyotek Ltd. All Rights Reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
