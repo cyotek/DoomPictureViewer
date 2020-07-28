@@ -1,8 +1,9 @@
 ﻿using System.IO;
 
-// Decoding DOOM Picture Files
-// https://www.cyotek.com/blog/decoding-doom-picture-files
-// Copyright © 2020 Cyotek Ltd. All Rights Reserved.
+// Loading the color palette from a BBM/LBM image file using C
+// https://www.cyotek.com/blog/loading-the-color-palette-from-a-bbm-lbm-image-file-using-csharp
+
+// Copyright © 2014 Cyotek Ltd. All Rights Reserved.
 
 // This work is licensed under the Creative Commons Attribution 4.0 International License.
 // To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.

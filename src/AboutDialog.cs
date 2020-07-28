@@ -5,8 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-// Decoding DOOM Picture Files
-// https://www.cyotek.com/blog/decoding-doom-picture-files
+// Reading DOOM WAD files
+// https://www.cyotek.com/blog/reading-doom-wad-files
+
+// Writing DOOM WAD files
+// https://www.cyotek.com/blog/writing-doom-wad-files
+
 // Copyright © 2020 Cyotek Ltd. All Rights Reserved.
 
 // This work is licensed under the Creative Commons Attribution 4.0 International License.

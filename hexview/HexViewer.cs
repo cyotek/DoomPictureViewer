@@ -5,8 +5,12 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+// Writing Adobe Swatch Exchange (ase) files using C#
+// http://www.cyotek.com/blog/writing-adobe-swatch-exchange-ase-files-using-csharp
+
 // Decoding DOOM Picture Files
 // https://www.cyotek.com/blog/decoding-doom-picture-files
+
 // Copyright © 2020 Cyotek Ltd. All Rights Reserved.
 
 // This work is licensed under the Creative Commons Attribution 4.0 International License.

@@ -53,9 +53,7 @@
     </Compile>
     <Compile Include="ClipboardHelper.cs" />
     <Compile Include="DoomPictureReader.cs" />
-    <Compile Include="FileDialogHelper.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FileDialogHelper.cs" />
     <Compile Include="FileInfo.cs" />
     <Compile Include="FilePane.cs">
       <SubType>UserControl</SubType>
