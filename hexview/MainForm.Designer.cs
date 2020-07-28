@@ -1,4 +1,4 @@
-﻿namespace Cyotek.Windows.Forms.Demo
+﻿namespace Cyotek.Demo
 {
   partial class MainForm
   {
@@ -34,8 +34,8 @@
       this.toolStrip = new System.Windows.Forms.ToolStrip();
       this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.splitContainer = new System.Windows.Forms.SplitContainer();
-      this.filePane = new Cyotek.Windows.Forms.Demo.FilePane();
-      this.hexViewer = new Cyotek.Windows.Forms.Demo.HexViewer();
+      this.filePane = new Cyotek.Demo.Windows.Forms.FilePane();
+      this.hexViewer = new Cyotek.Demo.Windows.Forms.HexViewer();
       this.statusStrip = new System.Windows.Forms.StatusStrip();
       this.statusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.sizeToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -290,7 +290,7 @@
     private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
     private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-    private Cyotek.Windows.Forms.Demo.HexViewer hexViewer;
+    private Cyotek.Demo.Windows.Forms.HexViewer hexViewer;
     private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem primaryPostsToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem secondaryPostsToolStripMenuItem;
@@ -299,7 +299,7 @@
     private System.Windows.Forms.ToolStripStatusLabel statusToolStripStatusLabel;
     private System.Windows.Forms.ToolStripStatusLabel cyotekLinkToolStripStatusLabel;
     private System.Windows.Forms.ToolStripStatusLabel sizeToolStripStatusLabel;
-    private FilePane filePane;
+    private Cyotek.Demo.Windows.Forms.FilePane filePane;
   }
 }
 

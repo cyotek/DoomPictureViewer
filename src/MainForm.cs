@@ -1,12 +1,11 @@
-﻿using Cyotek.Demo;
-using Cyotek.Demo.DoomPictureViewer;
+﻿using Cyotek.Demo.DoomPictureViewer;
+using Cyotek.Demo.Windows.Forms;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Media;
 using System.Windows.Forms;
-using FileInfo = Cyotek.Demo.FileInfo;
 
 // Decoding DOOM Picture Files
 // https://www.cyotek.com/blog/decoding-doom-picture-files
@@ -18,7 +17,7 @@ using FileInfo = Cyotek.Demo.FileInfo;
 // Found this example useful?
 // https://www.paypal.me/cyotek
 
-namespace Cyotek.Windows.Forms.Demo
+namespace Cyotek.Demo
 {
   public partial class MainForm : Form
   {
